@@ -6,7 +6,7 @@
 /*   By: noah <noah@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 22:50:27 by noah              #+#    #+#             */
-/*   Updated: 2024/09/28 00:25:42 by noah             ###   ########.fr       */
+/*   Updated: 2024/09/28 19:22:51 by noah             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,16 @@ int	main(int argc, char **argv, char **env)
 		return (printf("Error\n"), 1);
 	if (!init_global(&global, argv[1]))
 		return (printf("Error\n"), 2);
+	if (!parsing(&global))
+		return (printf("Error\n"), free_all(&global), 3);
+	/*t_cub *cur = global.file;
+	while (cur)
+	{
+		printf("%s\n", cur->line);
+		cur = cur->next;
+	}
+	printf("\n");
+	printf("%s\n%s\n%s\n%s\n%s\n%s\n", global.north, global.south, global.east, global.west, global.floor, global.ceiling);*/
 	free_all(&global);
 	return (0);
 }

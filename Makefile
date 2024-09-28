@@ -8,7 +8,8 @@ SRCS = src/main.c \
 	src/parsing.c \
 	src/init.c \
 	src/chained_list.c \
-	src/free.c
+	src/free.c \
+	src/utils.c
 
 OBJS = $(SRCS:%.c=$(OBJS_DIR)/%.o)
 
