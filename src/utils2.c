@@ -1,31 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free.c                                             :+:      :+:    :+:   */
+/*   utils2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: noah <noah@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/28 00:13:13 by noah              #+#    #+#             */
-/*   Updated: 2024/09/29 01:31:53 by noah             ###   ########.fr       */
+/*   Created: 2024/09/29 00:36:36 by noah              #+#    #+#             */
+/*   Updated: 2024/09/29 00:38:20 by noah             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-static void	free_no_null(void *data)
+int	thereis_charset(char *str, char *set)
 {
-	if (data)
-		free(data);
-}
+	int	i;
+	int	j;
 
-void	free_all(t_global *global)
-{
-	free_no_null((void *)global->south);
-	free_no_null((void *)global->north);
-	free_no_null((void *)global->east);
-	free_no_null((void *)global->west);
-	free_no_null((void *)global->ceiling);
-	free_no_null((void *)global->floor);
-	if (global->file)
-		free_list(global->file);
+	if (!str)
+		return (0);
+	i = 0;
+	while (str[i])
+	{
+		j = 0;
+		while (set[j])
+			if (str[i] == set[j++])
+				return (1);
+		i++;
+	}
+	return (0);
 }

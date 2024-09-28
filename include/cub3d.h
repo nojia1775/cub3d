@@ -6,7 +6,7 @@
 /*   By: noah <noah@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 22:48:20 by noah              #+#    #+#             */
-/*   Updated: 2024/09/28 18:53:27 by noah             ###   ########.fr       */
+/*   Updated: 2024/09/29 01:18:06 by noah             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,12 @@ typedef struct s_global
 	char	*floor;
 	char	*ceiling;
 	char	**map;
+	int		r_floor;
+	int		g_floor;
+	int		b_floor;
+	int		r_ceiling;
+	int		g_ceiling;
+	int		b_ceiling;
 	t_cub	*file;
 }	t_global;
 
@@ -58,5 +64,7 @@ int		add_east(t_global *global, char *str);
 int		add_west(t_global *global, char *str);
 int		add_floor_ceiling(t_global *global, char *str, int f_or_c);
 int		parsing(t_global *global);
+int		thereis_charset(char *str, char *set);
+int		parsing_floor_ceiling(t_global *global);
 
 #endif

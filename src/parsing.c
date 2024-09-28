@@ -6,7 +6,7 @@
 /*   By: noah <noah@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 22:59:24 by noah              #+#    #+#             */
-/*   Updated: 2024/09/28 18:52:26 by noah             ###   ########.fr       */
+/*   Updated: 2024/09/29 01:31:25 by noah             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ static int	valid_file(t_global *global, t_cub *list)
 		cur = cur->next;
 		count++;
 	}
+	if (!parsing_floor_ceiling(global))
+		return (0);
 	return (1);
 }
 

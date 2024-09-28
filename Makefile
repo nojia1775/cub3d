@@ -9,7 +9,9 @@ SRCS = src/main.c \
 	src/init.c \
 	src/chained_list.c \
 	src/free.c \
-	src/utils.c
+	src/utils.c \
+	src/utils2.c \
+	src/parsing_floor_ceiling.c
 
 OBJS = $(SRCS:%.c=$(OBJS_DIR)/%.o)
 

@@ -1,9 +1,17 @@
 NO test_nord
+
+
 SO test_sud
-EA test_est
-WE test_ouest
-F test_sol
-C test_plafond
+
+
+
+WE                   test_ouest
+EA test_est           
+
+
+
+F 255,10,10
+C                        0,150,95
 
        NO          
     dsvedv   

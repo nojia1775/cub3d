@@ -6,7 +6,7 @@
 /*   By: noah <noah@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 23:25:13 by noah              #+#    #+#             */
-/*   Updated: 2024/09/28 19:23:30 by noah             ###   ########.fr       */
+/*   Updated: 2024/09/29 01:32:42 by noah             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,12 @@ int	init_global(t_global *global, char *map)
 	global->file = NULL;
 	global->floor = NULL;
 	global->ceiling = NULL;
+	global->r_floor = -1;
+	global->g_floor = -1;
+	global->b_floor = -1;
+	global->r_ceiling = -1;
+	global->g_ceiling = -1;
+	global->b_ceiling = -1;
 	if (!extract_file(global, map))
 		return (0);
 	return (1);
