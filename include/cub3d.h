@@ -6,7 +6,7 @@
 /*   By: noah <noah@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 22:48:20 by noah              #+#    #+#             */
-/*   Updated: 2024/09/29 01:18:06 by noah             ###   ########.fr       */
+/*   Updated: 2024/09/29 12:59:35 by noah             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,5 +66,8 @@ int		add_floor_ceiling(t_global *global, char *str, int f_or_c);
 int		parsing(t_global *global);
 int		thereis_charset(char *str, char *set);
 int		parsing_floor_ceiling(t_global *global);
+int		extract_map(t_global *global);
+t_cub	*get_pos_map(t_global *global);
+void	free_and_null(void **data);
 
 #endif

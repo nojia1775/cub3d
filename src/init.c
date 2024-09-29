@@ -6,7 +6,7 @@
 /*   By: noah <noah@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 23:25:13 by noah              #+#    #+#             */
-/*   Updated: 2024/09/29 01:32:42 by noah             ###   ########.fr       */
+/*   Updated: 2024/09/29 13:02:49 by noah             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,11 @@
 static int	extract_file(t_global *global, char *map)
 {
 	int		fd;
+	int		i;
 	char	*str;
 	char	*tmp;
 
+	i = 0;
 	str = "";
 	fd = open(map, O_RDONLY);
 	if (fd == -1)
@@ -27,11 +29,19 @@ static int	extract_file(t_global *global, char *map)
 		str = get_next_line(fd);
 		if (!str)
 			break ;
-		tmp = ft_strtrim(str, " \n\t");
+		if (i < 7)
+		{
+			tmp = ft_strtrim(str, " \n\t");
+			if (tmp[0])
+			{
+				add_list(&global->file, tmp);
+				i++;
+			}
+		}
+		else
+			add_list(&global->file, str);
 		free(str);
-		if (tmp[0])
-			add_list(&global->file, tmp);
-		free(tmp);
+		free_and_null((void **)&tmp);
 	}
 	return (1);
 }
