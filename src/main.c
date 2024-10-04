@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: noah <noah@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: nadjemia <nadjemia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 22:50:27 by noah              #+#    #+#             */
-/*   Updated: 2024/09/29 13:03:23 by noah             ###   ########.fr       */
+/*   Updated: 2024/10/04 18:20:48 by nadjemia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,14 +48,17 @@ int	main(int argc, char **argv, char **env)
 		return (printf("Error\n"), 2);
 	if (!parsing(&global))
 		return (printf("Error\n"), free_all(&global), 3);
-	t_cub *cur = global.file;
-	while (cur)
-	{
-		printf("%s\n", cur->line);
-		cur = cur->next;
-	}
-	printf("\n");
-	printf("%s\n%s\n%s\n%s\n%s\n%s\n", global.north, global.south, global.east, global.west, global.floor, global.ceiling);
+	// int i = 0;
+	// while (global.map[i])
+	// 	printf("%s\n", global.map[i++]);
+	// t_cub *cur = global.file;
+	// while (cur)
+	// {
+	// 	printf("%s\n", cur->line);
+	// 	cur = cur->next;
+	// }
+	// printf("\n");
+	// printf("%s\n%s\n%s\n%s\n%s\n%s\n", global.north, global.south, global.east, global.west, global.floor, global.ceiling);
 	free_all(&global);
 	return (0);
 }

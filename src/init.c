@@ -3,21 +3,46 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: noah <noah@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: nadjemia <nadjemia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 23:25:13 by noah              #+#    #+#             */
-/*   Updated: 2024/09/29 13:02:49 by noah             ###   ########.fr       */
+/*   Updated: 2024/10/04 18:00:58 by nadjemia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
+
+static int	elem_or_map(char *str, t_global *global, int *i)
+{
+	char	*tmp;
+	int	flag;
+
+	flag = 0;
+	if (*i < 6)
+	{
+		tmp = ft_strtrim(str, " \n\t");
+		if (tmp[0] && ++(*i))
+			add_list(&global->file, tmp);
+	}
+	else
+	{
+		tmp = ft_strtrim(str, "\n");
+		if (!tmp[0] && *i > 6)
+			flag = 1;
+		else if (flag)
+			return (0);
+		else if (++(*i))
+			add_list(&global->file, tmp);
+	}
+	free_and_null((void **)&tmp);
+	return (1);
+}
 
 static int	extract_file(t_global *global, char *map)
 {
 	int		fd;
 	int		i;
 	char	*str;
-	char	*tmp;
 
 	i = 0;
 	str = "";
@@ -29,19 +54,9 @@ static int	extract_file(t_global *global, char *map)
 		str = get_next_line(fd);
 		if (!str)
 			break ;
-		if (i < 7)
-		{
-			tmp = ft_strtrim(str, " \n\t");
-			if (tmp[0])
-			{
-				add_list(&global->file, tmp);
-				i++;
-			}
-		}
-		else
-			add_list(&global->file, str);
+		if (!elem_or_map(str, global, &i))
+			return (0);
 		free(str);
-		free_and_null((void **)&tmp);
 	}
 	return (1);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: noah <noah@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: nadjemia <nadjemia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 22:48:20 by noah              #+#    #+#             */
-/*   Updated: 2024/09/29 12:59:35 by noah             ###   ########.fr       */
+/*   Updated: 2024/10/04 15:42:26 by nadjemia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,5 +69,6 @@ int		parsing_floor_ceiling(t_global *global);
 int		extract_map(t_global *global);
 t_cub	*get_pos_map(t_global *global);
 void	free_and_null(void **data);
+char	*ft_strndup(char *str, size_t len);
 
 #endif
