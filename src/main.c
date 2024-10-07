@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 22:50:27 by noah              #+#    #+#             */
-/*   Updated: 2024/10/07 14:11:02 by codespace        ###   ########.fr       */
+/*   Updated: 2024/10/07 14:56:30 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,11 +51,7 @@ int	main(int argc, char **argv, char **env)
 	int k = 0;
 	while (global.map[k])
 	{
-		int l = 0;
-		while (global.map[k][l])
-			printf("%d ", global.map[k][l++]);
-		k++;
-		printf("\n");
+		printf("%s\n", global.map[k++]);
 	}
 	free_all(&global);
 	return (0);
