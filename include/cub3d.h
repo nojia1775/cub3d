@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nadjemia <nadjemia@student.42.fr>          +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 22:48:20 by noah              #+#    #+#             */
-/*   Updated: 2024/10/04 15:42:26 by nadjemia         ###   ########.fr       */
+/*   Updated: 2024/10/07 13:48:12 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,5 +70,6 @@ int		extract_map(t_global *global);
 t_cub	*get_pos_map(t_global *global);
 void	free_and_null(void **data);
 char	*ft_strndup(char *str, size_t len);
+void	strcpy_n(char *dest, char *src, size_t n);
 
 #endif

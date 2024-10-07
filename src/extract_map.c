@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   extract_map.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nadjemia <nadjemia@student.42.fr>          +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/29 12:07:55 by noah              #+#    #+#             */
-/*   Updated: 2024/10/04 18:22:10 by nadjemia         ###   ########.fr       */
+/*   Updated: 2024/10/07 14:22:29 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,41 +47,42 @@ static void	true_size_map(t_global *global, int *begin, int *end, int *lines)
 	}
 }
 
-static int	supp_spaces(t_global *global, char ***map)
+static char	**supp_spaces(t_global *global)
 {
 	t_cub	*cur;
 	int		begin;
 	int		end;
 	int		lines;
 	int		i;
+	char	**map;
 
-	i = 0;
 	lines = 0;
 	begin = 1000000;
 	end = 0;
 	cur = get_pos_map(global);
 	true_size_map(global, &begin, &end, &lines);
-	printf("begin = %d end = %d\n", begin, end);
-	*map = (char **)malloc(sizeof(char) * (lines + 1));
-	if (!(*map))
-		return (0);
-	*map[lines] = NULL;
-	while (cur)
+	map = (char **)malloc(sizeof(char) * (lines + 1));
+	if (!map)
+		return (NULL);
+	map[lines] = NULL;
+	i = 0;
+	while (i < lines)
 	{
-		*map[i] = ft_strndup(cur->line + begin, (size_t)(end - begin + 1));
-		if (!(*map))
-			return (0);
+		map[i] = ft_strndup(cur->line + begin, (size_t)(end - begin + 1));
+		if (!map[i])
+			return (NULL);
 		i++;
 		cur = cur->next;
 	}
-	return (1);
+	return (map);
 }
 
 static int	size_map(t_global *global, int *line, int *column)
 {
 	t_cub	*cur;
 
-	if (!supp_spaces(global, &global->map))
+	global->map = supp_spaces(global);
+	if (!global->map)
 		return (0);
 	cur = get_pos_map(global);
 	while (cur)
@@ -133,6 +134,5 @@ int	extract_map(t_global *global)
 		return (0);
 	if (!size_map(global, &line, &column))
 		return (0);
-	printf("line = %d column = %d\n", line, column);
 	return (1);
 }
