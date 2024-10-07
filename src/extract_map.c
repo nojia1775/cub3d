@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/29 12:07:55 by noah              #+#    #+#             */
-/*   Updated: 2024/10/07 14:55:21 by codespace        ###   ########.fr       */
+/*   Updated: 2024/10/07 15:47:07 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static void	true_size_map(t_global *global, int *begin, int *end, int *lines)
 		i = 0;
 		while (cur->line[i])
 		{
-			if (cur->line[i] != ' ' && cur->line[i] != '\t')
+			if (cur->line[i] != ' ' && cur->line[i] != '\t' && cur->line[i] != '\n')
 			{
 				if (i < *begin)
 					*begin = i;
@@ -34,13 +34,14 @@ static void	true_size_map(t_global *global, int *begin, int *end, int *lines)
 		i = ft_strlen(cur->line) - 1;
 		while (i >= 0)
 		{
-			if (cur->line[i] != ' ' && cur->line[i--] != '\t')
+			if (cur->line[i] != ' ' && cur->line[i] != '\t'
+			&& cur->line[i] != '\n')
 			{
 				if (i + 1 > *end)
 					*end = i + 1;
 				break ;
 			}
-			i++;
+			i--;
 		}
 		cur = cur->next;
 		(*lines)++;
@@ -68,7 +69,7 @@ static char	**supp_spaces(t_global *global)
 	i = 0;
 	while (i < lines && cur)
 	{
-		map[i] = ft_strndup(cur->line + begin, (size_t)(end - begin + 1));
+		map[i] = ft_strndup(cur->line + begin, (size_t)(end - begin));
 		if (!map[i])
 			return (NULL);
 		i++;
@@ -107,9 +108,12 @@ static int	valid_char(t_global *global)
 
 int	extract_map(t_global *global)
 {
+	global->map = supp_spaces(global);
+	int i = 0;
+	while (global->map[i])
+		printf("%s\n", global->map[i++]);
 	if (!valid_char(global))
 		return (0);
-	global->map = supp_spaces(global);
 	if (!global->map)
 		return (0);
 	return (1);

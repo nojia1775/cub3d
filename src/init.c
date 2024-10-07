@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nadjemia <nadjemia@student.42.fr>          +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 23:25:13 by noah              #+#    #+#             */
-/*   Updated: 2024/10/04 18:00:58 by nadjemia         ###   ########.fr       */
+/*   Updated: 2024/10/07 15:31:30 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,8 @@
 static int	elem_or_map(char *str, t_global *global, int *i)
 {
 	char	*tmp;
-	int	flag;
 
-	flag = 0;
+	tmp = NULL;
 	if (*i < 6)
 	{
 		tmp = ft_strtrim(str, " \n\t");
@@ -26,13 +25,8 @@ static int	elem_or_map(char *str, t_global *global, int *i)
 	}
 	else
 	{
-		tmp = ft_strtrim(str, "\n");
-		if (!tmp[0] && *i > 6)
-			flag = 1;
-		else if (flag)
-			return (0);
-		else if (++(*i))
-			add_list(&global->file, tmp);
+		if (++(*i))
+			add_list(&global->file, str);
 	}
 	free_and_null((void **)&tmp);
 	return (1);
