@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: nadjemia <nadjemia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/29 00:36:36 by noah              #+#    #+#             */
-/*   Updated: 2024/10/07 14:17:38 by codespace        ###   ########.fr       */
+/*   Updated: 2024/10/08 15:17:43 by nadjemia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,19 @@ t_cub	*get_pos_map(t_global *global)
 	return (cur);
 }
 
+static void	no_nl(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] == '\n')
+			str[i] = ' ';
+		i++;
+	}
+}
+
 char	*ft_strndup(char *str, size_t len)
 {
 	char	*result;
@@ -77,6 +90,7 @@ char	*ft_strndup(char *str, size_t len)
 	result = (char *)malloc(sizeof(char) * (len + 1));
 	if (!result)
 		return (NULL);
+	no_nl(str);
 	strcpy_n(result, str, len + 1);
 	return (result);
 }

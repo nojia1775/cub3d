@@ -6,7 +6,7 @@
 /*   By: nadjemia <nadjemia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 22:59:24 by noah              #+#    #+#             */
-/*   Updated: 2024/10/04 11:25:44 by nadjemia         ###   ########.fr       */
+/*   Updated: 2024/10/08 16:47:48 by nadjemia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@ int	parsing(t_global *global)
 	if (!valid_file(global, global->file))
 		return (0);
 	if (!extract_map(global))
+		return (0);
+	if (!parsing_map(global))
 		return (0);
 	return (1);
 }
