@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nadjemia <nadjemia@student.42.fr>          +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 22:48:20 by noah              #+#    #+#             */
-/*   Updated: 2024/10/08 16:45:04 by nadjemia         ###   ########.fr       */
+/*   Updated: 2024/10/09 11:44:33 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,5 +72,8 @@ void	free_and_null(void **data);
 char	*ft_strndup(char *str, size_t len);
 void	strcpy_n(char *dest, char *src, size_t n);
 int		parsing_map(t_global *global);
+int		empty_line(char *str);
+void	degat_des_eaux(char **map);
+int		map_closed(char **map);
 
 #endif

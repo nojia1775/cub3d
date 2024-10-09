@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   extract_map.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nadjemia <nadjemia@student.42.fr>          +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/29 12:07:55 by noah              #+#    #+#             */
-/*   Updated: 2024/10/08 16:48:46 by nadjemia         ###   ########.fr       */
+/*   Updated: 2024/10/09 08:54:34 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ static int	valid_char(t_global *global)
 			if (cur->line[i] != '0' && cur->line[i] != '1'
 				&& cur->line[i] != 'N' && cur->line[i] != 'S'
 				&& cur->line[i] != 'W' && cur->line[i] != 'E'
-				&& cur->line[i] != ' ')
+				&& cur->line[i] != ' ' && cur->line[i] != '\n')
 				return (0);
 			if (cur->line[i] == 'N' || cur->line[i] == 'S'
 				|| cur->line[i] == 'E' || cur->line[i] == 'W')
@@ -110,9 +110,6 @@ static int	valid_char(t_global *global)
 int	extract_map(t_global *global)
 {
 	global->map = supp_spaces(global);
-	int i = 0;
-	while (global->map[i])
-		printf("%s\n", global->map[i++]);
 	if (!valid_char(global))
 		return (0);
 	if (!global->map)

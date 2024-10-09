@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nadjemia <nadjemia@student.42.fr>          +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/29 00:36:36 by noah              #+#    #+#             */
-/*   Updated: 2024/10/08 15:17:43 by nadjemia         ###   ########.fr       */
+/*   Updated: 2024/10/09 09:49:08 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,16 @@
 
 void	strcpy_n(char *dest, char *src, size_t n)
 {
-	size_t	i;
+	int	i;
+	int	len;
 
+	len = (int)ft_strlen(src) - 1;
+	if (len < 0)
+		len = 0;
 	i = 0;
-	while (i < n - 1)
+	while (i < (int)n - 1)
 	{
-		if (i > ft_strlen(src) - 1)
+		if (i > len)
 			dest[i] = ' ';
 		else
 			dest[i] = src[i];
