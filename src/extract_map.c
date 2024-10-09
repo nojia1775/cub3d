@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/29 12:07:55 by noah              #+#    #+#             */
-/*   Updated: 2024/10/09 15:14:01 by codespace        ###   ########.fr       */
+/*   Updated: 2024/10/09 15:24:05 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,9 +73,12 @@ static char	**supp_spaces(t_global *global)
 	while (vars.i < vars.lines && vars.cur)
 	{
 		if (ft_strlen(vars.cur->line) > (size_t)vars.begin)
-			vars.map[vars.i] = ft_strndup(vars.cur->line + vars.begin, (size_t)(vars.end - vars.begin));
+		{
+			vars.map[vars.i] = ft_strndup(vars.cur->line
+				+ vars.begin, (size_t)(vars.end - vars.begin));
+		}
 		else
-			vars.map[vars.i] = ft_strndup("", (size_t)(vars.end - vars.begin));
+			vars.map[vars.i] = ft_strndup(" ", (size_t)(vars.end - vars.begin));
 		if (!vars.map[vars.i])
 			return (NULL);
 		vars.i++;
