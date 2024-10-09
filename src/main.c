@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 22:50:27 by noah              #+#    #+#             */
-/*   Updated: 2024/10/07 14:56:30 by codespace        ###   ########.fr       */
+/*   Updated: 2024/10/09 14:36:02 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,11 +48,10 @@ int	main(int argc, char **argv, char **env)
 		return (printf("Error\n"), 2);
 	if (!parsing(&global))
 		return (printf("Error\n"), free_all(&global), 3);
+	printf("NO = %s\nSO = %s\nWE = %s\nEA = %s\nC = %d,%d,%d\nF = %d,%d,%d\n", global.north, global.south, global.west, global.east, global.r_ceiling, global.g_ceiling, global.b_ceiling, global.r_floor, global.g_floor, global.b_floor);
 	int k = 0;
 	while (global.map[k])
-	{
 		printf("%s\n", global.map[k++]);
-	}
 	free_all(&global);
 	return (0);
 }
