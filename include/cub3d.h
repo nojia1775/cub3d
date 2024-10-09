@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 22:48:20 by noah              #+#    #+#             */
-/*   Updated: 2024/10/09 14:52:20 by codespace        ###   ########.fr       */
+/*   Updated: 2024/10/09 15:12:02 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,16 @@ typedef struct s_global
 	int		b_ceiling;
 	t_cub	*file;
 }	t_global;
+
+typedef struct s_vars
+{
+	t_cub	*cur;
+	int		begin;
+	int		end;
+	int		lines;
+	int		i;
+	char	**map;
+}	t_vars;
 
 int		init_global(t_global *global, char *map);
 int		add_list(t_cub **list, char *content);

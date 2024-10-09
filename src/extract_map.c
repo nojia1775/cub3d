@@ -6,11 +6,28 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/29 12:07:55 by noah              #+#    #+#             */
-/*   Updated: 2024/10/09 14:24:45 by codespace        ###   ########.fr       */
+/*   Updated: 2024/10/09 15:14:01 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
+
+static void	iter(t_cub *cur, int *begin)
+{
+	int	i;
+
+	i = 0;
+	while (cur->line[i])
+	{
+		if (cur->line[i] != ' ' && cur->line[i] != '\t' && cur->line[i] != '\n')
+		{
+			if (i < *begin)
+				*begin = i;
+			break ;
+		}
+		i++;
+	}
+}
 
 static void	true_size_map(t_global *global, int *begin, int *end, int *lines)
 {
@@ -20,17 +37,7 @@ static void	true_size_map(t_global *global, int *begin, int *end, int *lines)
 	cur = get_pos_map(global);
 	while (cur)
 	{
-		i = 0;
-		while (cur->line[i])
-		{
-			if (cur->line[i] != ' ' && cur->line[i] != '\t' && cur->line[i] != '\n')
-			{
-				if (i < *begin)
-					*begin = i;
-				break ;
-			}
-			i++;
-		}
+		iter(cur, begin);
 		i = ft_strlen(cur->line) - 1;
 		while (i >= 0)
 		{
@@ -51,35 +58,30 @@ static void	true_size_map(t_global *global, int *begin, int *end, int *lines)
 
 static char	**supp_spaces(t_global *global)
 {
-	t_cub	*cur;
-	int		begin;
-	int		end;
-	int		lines;
-	int		i;
-	char	**map;
+	t_vars	vars;
 
-	lines = 0;
-	begin = 1000000;
-	end = 0;
-	cur = get_pos_map(global);
-	true_size_map(global, &begin, &end, &lines);
-	map = (char **)malloc(sizeof(char *) * (lines + 1));
-	if (!map)
+	vars.lines = 0;
+	vars.begin = 1000000;
+	vars.end = 0;
+	vars.cur = get_pos_map(global);
+	true_size_map(global, &vars.begin, &vars.end, &vars.lines);
+	vars.map = (char **)malloc(sizeof(char *) * (vars.lines + 1));
+	if (!vars.map)
 		return (NULL);
-	map[lines] = NULL;
-	i = 0;
-	while (i < lines && cur)
+	vars.map[vars.lines] = NULL;
+	vars.i = 0;
+	while (vars.i < vars.lines && vars.cur)
 	{
-		if (ft_strlen(cur->line) > (size_t)begin)
-			map[i] = ft_strndup(cur->line + begin, (size_t)(end - begin));
+		if (ft_strlen(vars.cur->line) > (size_t)vars.begin)
+			vars.map[vars.i] = ft_strndup(vars.cur->line + vars.begin, (size_t)(vars.end - vars.begin));
 		else
-			map[i] = ft_strndup("", (size_t)(end - begin));
-		if (!map[i])
+			vars.map[vars.i] = ft_strndup("", (size_t)(vars.end - vars.begin));
+		if (!vars.map[vars.i])
 			return (NULL);
-		i++;
-		cur = cur->next;
+		vars.i++;
+		vars.cur = vars.cur->next;
 	}
-	return (map);
+	return (vars.map);
 }
 
 static int	valid_char(t_global *global)
