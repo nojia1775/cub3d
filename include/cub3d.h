@@ -3,16 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: nadjemia <nadjemia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 22:48:20 by noah              #+#    #+#             */
-/*   Updated: 2024/10/09 15:12:02 by codespace        ###   ########.fr       */
+/*   Updated: 2024/10/24 17:25:18 by nadjemia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 
 # define CUB3D_H
+
+# define WIDTH 889
+# define HEIGHT 500
+
+/*
+droite = 65363 ou 100
+gauche = 65361 ou 97
+haut = 65362 ou 119
+bas = 65364 ou 115
+*/
 
 # include <stdio.h>
 # include <stdlib.h>
@@ -36,8 +46,21 @@ typedef struct s_cub
 	struct s_cub	*prev;
 }	t_cub;
 
+typedef struct s_player
+{
+	double	pos_x;
+	double	pos_y;
+	double	vector_x;
+	double	vector_y;
+	double	plane_x;
+	double	plane_y;
+};
+
 typedef struct s_global
 {
+	void	*mlx;
+	void	*win;
+	void	*img;
 	char	*south;
 	char	*north;
 	char	*east;
@@ -83,5 +106,8 @@ char	*ft_strndup(char *str, size_t len);
 void	strcpy_n(char *dest, char *src, size_t n);
 int		parsing_map(t_global *global);
 int		empty_line(char *str);
+void	my_mlx_init(t_global *global);
+void	my_mlx_new_win(t_global *global, char *title);
+void	init_game(t_global *global, char *title);
 
 #endif

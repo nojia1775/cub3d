@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: nadjemia <nadjemia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/28 00:13:13 by noah              #+#    #+#             */
-/*   Updated: 2024/10/07 15:05:09 by codespace        ###   ########.fr       */
+/*   Updated: 2024/10/24 15:48:25 by nadjemia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,4 +43,7 @@ void	free_all(t_global *global)
 		free_list(global->file);
 	if (global->map)
 		free_map(global->map);
+	mlx_destroy_window(global->mlx, global->win);
+	mlx_destroy_display(global->mlx);
+	free(global->mlx);
 }

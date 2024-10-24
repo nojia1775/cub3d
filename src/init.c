@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: nadjemia <nadjemia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 23:25:13 by noah              #+#    #+#             */
-/*   Updated: 2024/10/07 15:31:30 by codespace        ###   ########.fr       */
+/*   Updated: 2024/10/24 17:10:32 by nadjemia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,9 @@ int	init_global(t_global *global, char *map)
 	global->file = NULL;
 	global->floor = NULL;
 	global->ceiling = NULL;
+	global->mlx = NULL;
+	global->win = NULL;
+	global->img = NULL;
 	global->r_floor = -1;
 	global->g_floor = -1;
 	global->b_floor = -1;

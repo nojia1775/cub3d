@@ -14,7 +14,9 @@ SRCS = src/main.c \
 	src/parsing_floor_ceiling.c \
 	src/extract_map.c \
 	src/parsing_map.c \
-	src/utils3.c 
+	src/utils3.c \
+	src/my_mlx.c \
+	src/init_game.c
 
 OBJS = $(SRCS:%.c=$(OBJS_DIR)/%.o)
 
