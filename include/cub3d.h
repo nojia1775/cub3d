@@ -6,7 +6,7 @@
 /*   By: nadjemia <nadjemia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 22:48:20 by noah              #+#    #+#             */
-/*   Updated: 2024/10/24 17:25:18 by nadjemia         ###   ########.fr       */
+/*   Updated: 2024/11/05 15:39:26 by nadjemia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,20 @@
 # define WIDTH 889
 # define HEIGHT 500
 
-/*
-droite = 65363 ou 100
-gauche = 65361 ou 97
-haut = 65362 ou 119
-bas = 65364 ou 115
-*/
+# define LEFT 65361
+# define RIGHT 65363
+# define UP 65362
+# define DOWN 65364
+# define A 97
+# define D 100
+# define W 119
+# define S 115
+# define ESC 65307
+
+# define SPEED 5
+
+# define TEXWIDTH 64
+# define TEXHEIGHT 64
 
 # include <stdio.h>
 # include <stdlib.h>
@@ -48,13 +56,9 @@ typedef struct s_cub
 
 typedef struct s_player
 {
-	double	pos_x;
-	double	pos_y;
-	double	vector_x;
-	double	vector_y;
-	double	plane_x;
-	double	plane_y;
-};
+	double	x;
+	double	y;
+}	t_player;
 
 typedef struct s_global
 {
@@ -68,13 +72,16 @@ typedef struct s_global
 	char	*floor;
 	char	*ceiling;
 	char	**map;
+	double	time;
+	double	oldtime;
+	t_cub	*file;
 	int		r_floor;
 	int		g_floor;
 	int		b_floor;
 	int		r_ceiling;
 	int		g_ceiling;
 	int		b_ceiling;
-	t_cub	*file;
+	t_player	*player;
 }	t_global;
 
 typedef struct s_vars
@@ -109,5 +116,7 @@ int		empty_line(char *str);
 void	my_mlx_init(t_global *global);
 void	my_mlx_new_win(t_global *global, char *title);
 void	init_game(t_global *global, char *title);
+void	get_player_coor(double *x, double *y, t_global *global);
+int		display(t_global *global);
 
 #endif

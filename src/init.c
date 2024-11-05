@@ -6,7 +6,7 @@
 /*   By: nadjemia <nadjemia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 23:25:13 by noah              #+#    #+#             */
-/*   Updated: 2024/10/24 17:10:32 by nadjemia         ###   ########.fr       */
+/*   Updated: 2024/11/05 12:12:05 by nadjemia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,12 +68,15 @@ int	init_global(t_global *global, char *map)
 	global->mlx = NULL;
 	global->win = NULL;
 	global->img = NULL;
+	global->player = NULL;
 	global->r_floor = -1;
 	global->g_floor = -1;
 	global->b_floor = -1;
 	global->r_ceiling = -1;
 	global->g_ceiling = -1;
 	global->b_ceiling = -1;
+	global->time = 0;
+	global->oldtime = 0;
 	if (!extract_file(global, map))
 		return (0);
 	return (1);

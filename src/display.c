@@ -1,51 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils3.c                                           :+:      :+:    :+:   */
+/*   display.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nadjemia <nadjemia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/09 08:38:27 by codespace         #+#    #+#             */
-/*   Updated: 2024/11/01 12:48:24 by nadjemia         ###   ########.fr       */
+/*   Created: 2024/11/05 12:09:05 by nadjemia          #+#    #+#             */
+/*   Updated: 2024/11/05 12:30:41 by nadjemia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-int	empty_line(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-	{
-		if (str[i] != ' ' && str[i] != '\t' && str[i] != '\n')
-			return (0);
-		i++;
-	}
-	return (1);
-}
-
-void	get_player_coor(double *x, double *y, t_global *global)
+static void	draw_player(t_global *global)
 {
 	int	i;
 	int	j;
 
 	i = 0;
-	while (global->map[i])
+	while (i < 8)
 	{
 		j = 0;
-		while (global->map[i][j])
+		while (j < 8)
 		{
-			if (global->map[i][j] == 'N' || global->map[i][j] == 'S'
-				|| global->map[i][j] == 'W'
-				|| global->map[i][j] == 'E')
-			{
-				*x = j;
-				*y = i;
-			}
-			j++;	
+			mlx_pixel_put(global->mlx, global->win, global->player->x + j, global->player->y + i, 0xFF0000);
+			j++;
 		}
 		i++;
 	}
+}
+
+int	display(t_global *global)
+{
+	draw_player(global);
+	return (1);
 }

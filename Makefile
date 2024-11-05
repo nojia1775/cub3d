@@ -16,7 +16,8 @@ SRCS = src/main.c \
 	src/parsing_map.c \
 	src/utils3.c \
 	src/my_mlx.c \
-	src/init_game.c
+	src/init_game.c \
+	src/display.c
 
 OBJS = $(SRCS:%.c=$(OBJS_DIR)/%.o)
 
